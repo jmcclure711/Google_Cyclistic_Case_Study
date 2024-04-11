@@ -35,8 +35,9 @@ FROM `singular-backup-413521. Capstone_Cyclistic.2023_trip_data;
 
 ---------------------------------------Preliminary Exploration------------------------------------------------------------
 
--- 1. ride_id
--- Check the length opf all ID's and see if there are any outliers.
+/* 1. ride_id
+- Check the length opf all ID's and see if there are any outliers.
+*/
 
 SELECT
   LENGTH(ride_id) AS id_length,
@@ -52,8 +53,9 @@ FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data`
 
 -- There are 5,719,877 ID's, meaning all are distinct.
 --------------------------------------------------------------------------------------------
--- 2. rideable_type
--- Check the number of different types of bikes offered and the amount of trips taken with each
+/* 2. rideable_type
+- Check the number of different types of bikes offered and the amount of trips taken with each.
+*/
 
 SELECT
   rideable_type,
@@ -64,8 +66,9 @@ GROUP BY rideable_type
 -- There are three different types of bikes: electric, classic and docked. Most popular is electric, followed by classic and then docked as a distant third.
 
 --------------------------------------------------------------------------------------------
--- 3. start_station/end_station
--- Check for naming inconsistencies or null values
+/* 3. start_station/end_station
+- Check for naming inconsistencies or null values
+*/
 
 SELECT
   start_station_name,
@@ -86,8 +89,9 @@ ORDER BY end_station_name;
 
 ----------------------------------------------------------------------------------------------
 
--- 4. member_casual
--- Will confirm there are only two rider types and check the amount of each through the year.
+/* 4. member_casual
+- Will confirm there are only two rider types and check the amount of each through the year.
+*/
 
 SELECT 
   DISTINCT(member_casual)
@@ -103,12 +107,13 @@ SELECT
 FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data`
 WHERE member_casual = 'casual';
 
--- It is confirmed there are only member and casual rider types.
--- There's record of 3,660,698 rides from members and 2,059,179 rides from casual customers
+/* It is confirmed there are only member and casual rider types.
+- There's record of 3,660,698 rides from members and 2,059,179 rides from casual customers
+*/
 
 -----------------------------------------------------------------------------------------------
 
--- 5. 
+/* 5. 
 
 
 
