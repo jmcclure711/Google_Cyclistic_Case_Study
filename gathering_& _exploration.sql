@@ -35,7 +35,7 @@ FROM `singular-backup-413521. Capstone_Cyclistic.2023_trip_data;
 
 ---------------------------------------Preliminary Exploration------------------------------------------------------------
 
-1. ride_id
+-- 1. ride_id
 -- Check the length opf all ID's and see if there are any outliers.
 
 SELECT
@@ -52,7 +52,7 @@ FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data`
 
 -- There are 5,719,877 ID's, meaning all are distinct.
 --------------------------------------------------------------------------------------------
-2. rideable_type
+-- 2. rideable_type
 -- Check the number of different types of bikes offered and the amount of trips taken with each
 
 SELECT
@@ -64,7 +64,7 @@ GROUP BY rideable_type
 -- There are three different types of bikes: electric, classic and docked. Most popular is electric, followed by classic and then docked as a distant third.
 
 --------------------------------------------------------------------------------------------
-3. start_station/end_station
+-- 3. start_station/end_station
 -- Check for naming inconsistencies or null values
 
 SELECT
@@ -86,7 +86,7 @@ ORDER BY end_station_name;
 
 ----------------------------------------------------------------------------------------------
 
-4. member_casual
+-- 4. member_casual
 -- Will confirm there are only two rider types and check the amount of each through the year.
 
 SELECT 
@@ -108,7 +108,7 @@ WHERE member_casual = 'casual';
 
 -----------------------------------------------------------------------------------------------
 
-5. 
+-- 5. 
 
 
 
