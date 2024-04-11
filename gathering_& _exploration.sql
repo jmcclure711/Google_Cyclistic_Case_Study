@@ -98,7 +98,7 @@ SELECT
 FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data`;
 
 SELECT 
-  COUNT(member_casual) AS member_rides
+COUNT(member_casual) AS member_rides
 FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data`
 WHERE member_casual = 'member';
 
@@ -113,8 +113,20 @@ WHERE member_casual = 'casual';
 
 -----------------------------------------------------------------------------------------------
 
-/* 5. 
+/* 5. start_time + end_time
+- Check for outliers for trip duration (under a minute and over a day)
+*/
 
+SELECT
+      COUNT(*) AS outlier_trips
+FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data`
+WHERE 
+      TIMESTAMP_DIFF(ended_at, started_at, MINUTE) <= 1
+      OR TIMESTAMP_DIFF(ended_at, started_at, MINUTE) >= 1440
+
+-- There are 269,711 trips that are outliers and will be removed from the data. 
+
+-----------------------------------------------------------------------------------------------
 
 
 
