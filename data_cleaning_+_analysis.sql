@@ -126,16 +126,45 @@ rides_per_hour AS (
 ---------------------------------------------------------------------------------------------------
 
 /*
-5. Trip Duration: What is the difference among how long each ride took between each customer type?
+5. Average trip durations: What is the difference among how long each ride took between each customer type?
+- First, avg trip duration per day of the week.
 */
 
-trip_duration AS (
+avg_trip_duration_by_day AS (
   SELECT
-    ride_time_minutes,
     member_casual AS member_type,
+    day_of_week,
+    ROUND(AVG(ride_time_minutes),1) AS avg_trip_duration,
     COUNT(*) AS num_of_trips
   FROM cleaned_tripdata
   GROUP BY
-    ride_time_minutes,
-    member_type
+    member_type,
+    day_of_week
+),
+
+-- Next, avg trip duration by month.
+
+avg_trip_duration_by_month AS (
+  SELECT
+    member_casual AS member_type,
+    month,
+    ROUND(AVG(ride_time_minutes),1) AS avg_month_trip_duration
+  FROM
+    cleaned_tripdata
+  GROUP BY 
+    member_type,
+    month
 )
+
+-- Finally, overall avg trip duration.
+
+SELECT
+  member_casual AS member_type,
+  ROUND(AVG(ride_time_minutes),1) AS avg_trip_duration
+FROM cleaned_tripdata
+GROUP BY 
+  member_type
+
+
+
+
