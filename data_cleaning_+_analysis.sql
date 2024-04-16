@@ -38,7 +38,8 @@ WITH extracted_tripdata AS (
       TIMESTAMP_DIFF(ended_at, started_at, MINUTE) AS ride_time_minutes,
       member_casual AS member_type
    FROM `singular-backup-413521.Capstone_Cyclistic.2023_trip_data` 
-)
+),
+cleaned_tripdata AS (
 SELECT
   *
 FROM
@@ -46,13 +47,95 @@ FROM
 WHERE
   ride_time_minutes BETWEEN 1 AND 1440 
   AND start_station_name IS NOT NULL
-  AND end_station_name IS NOT NULL  
+  AND end_station_name IS NOT NULL 
+),
 
--- This leaves a total of 4,258,846 trips to draw analysis from.
+-- This leaves a total of 4,258,846 trips to conduct analysis on.
 
---------------------------------------------------------------------------------------------------------
+-------------------------------------------ANALYSIS-------------------------------------------------------------
 
 /*
-ANALYSIS
+1. Bike Type: Find out the different bikes used per customer type
 */
 
+bike_type_data AS(
+  SELECT
+    rideable_type AS bike_type,
+    member_casual AS member_type,
+    COUNT(*) AS num_of_trips
+  FROM cleaned_tripdata
+  GROUP BY 
+    rideable_type,
+    member_casual
+),
+
+-----------------------------------------------------------------------------------------------
+
+/*
+2. Rides per month: How many rides were taken per month by both customer types?
+*/
+
+rides_per_month AS (
+  SELECT
+    month,
+    member_casual AS member_type,
+    COUNT(*) AS num_of_trips
+  FROM cleaned_tripdata
+  GROUP BY
+    month,
+    member_type
+  ORDER BY month
+),
+
+-------------------------------------------------------------------------------------------------
+
+/*
+3. Rides per day: What was the ride distribution per each customer type by day of the week?
+*/
+
+rides_per_day AS (
+  SELECT
+   day_of_week,
+   member_casual AS member_type,
+   COUNT(*) AS num_of_trips
+  FROM cleaned_tripdata
+  GROUP BY 
+    day_of_week,
+    member_type
+  ORDER BY 
+    day_of_week 
+),
+
+--------------------------------------------------------------------------------------------------
+
+/*
+4. Rides per hour: What was the distribution of rides per hour of the day among both customer types?
+*/
+
+rides_per_hour AS (
+  SELECT
+    EXTRACT(HOUR FROM started_at) AS time_of_day,
+    member_casual AS member_type,
+    COUNT(*) AS num_of_trips
+  FROM cleaned_tripdata
+  GROUP BY
+    member_type,
+    time_of_day
+), 
+
+---------------------------------------------------------------------------------------------------
+
+/*
+5. Trip Duration: What is the difference among how long each ride took between each customer type?
+*/
+
+trip_duration AS (
+  SELECT
+    ride_time_minutes,
+    member_casual AS member_type,
+    COUNT(*) AS num_of_trips
+  FROM cleaned_tripdata
+  GROUP BY
+    ride_time_minutes,
+    member_type
+)
