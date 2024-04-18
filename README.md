@@ -5,6 +5,7 @@ The final course of the Google Data Analytics course is a capstone project which
 - Cyclistic is a fictional bike-share company out of Chicago which is home to almost 6,000 bikes and 700 docking stations. Bikes are able to be checked out of one station and returned to any other station.
 - They currently offer bikes for three different ride purchase types - single-ride, full-day pass and annual memberships with two different customer types - casual and member.
 - The Director of Marketing has tasked the Marketing Analytics team to figure out how to convert casual riders to annual members.
+- I have been assigned to answer the following question: "How do annual members and casual riders use Cyclistic bikes differently?"
 ## Additional Info
 - SQL and Tableau were utilized to complete this case study.
 - Click [here](https://github.com/jmcclure711/Google_Cyclistic_Case_Study/blob/main/gathering_%2B%20_exploration.sql) to view the data gathering and exploration processes and [here](https://github.com/jmcclure711/Google_Cyclistic_Case_Study/blob/main/data_cleaning_%2B_analysis.sql) to view the cleaning and analysis processes in SQL.
