@@ -7,4 +7,4 @@ The final course of the Google Data Analytics course is a capstone project which
 - The Director of Marketing has tasked the Marketing Analytics team to figure out how to convert casual riders to annual members.
 ## Misc.
 - SQL and Tableau were utilized to complete this case study.
-- Click [here]( to view the process in SQL I took, click 
+- Click [here](https://github.com/jmcclure711/Google_Cyclistic_Case_Study/blob/main/gathering_%2B%20_exploration.sql) to view the data gathering and exploration process and [here]( click 
