@@ -9,3 +9,4 @@ The final course of the Google Data Analytics course is a capstone project which
 - SQL and Tableau were utilized to complete this case study.
 - Click [here](https://github.com/jmcclure711/Google_Cyclistic_Case_Study/blob/main/gathering_%2B%20_exploration.sql) to view the data gathering and exploration processes and [here](https://github.com/jmcclure711/Google_Cyclistic_Case_Study/blob/main/data_cleaning_%2B_analysis.sql) to view the cleaning and analysis processes in SQL.
 - To view the data visualization created in Tableau, visit my profile [here](https://public.tableau.com/app/profile/john.mcclure8534/vizzes) 
+- Click [here](https://divvy-tripdata.s3.amazonaws.com/index.html) to access the original data used for analysis.
